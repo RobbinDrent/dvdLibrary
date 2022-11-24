@@ -1,0 +1,42 @@
+body {
+    background-color: #eafaea;
+}
+
+h1 {
+    color: purple;
+    text-align: center;
+    font-family: verdana;
+    font-size: 40px;
+}
+
+p {
+    color: blue;
+    font-family: calibri;
+    margin-left: 5%;
+}
+
+
+
+table.center {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    font-family: Arial;
+}
+
+tr:nth-child(odd) {
+    background-color: deepskyblue;
+}
+
+tr:nth-child(even) {
+    background-color: lightskyblue;
+}
+
+input {
+    margin-left: 15%;
+}

@@ -3,6 +3,7 @@ package nl.miwgroningen.ch10.robbin.dvdLibrary.controller;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.model.Director;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.DirectorRepository;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.FilmRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,7 +52,6 @@ public class DirectorController {
 
     private String showFormForDirector(Model model, Director director) {
         model.addAttribute("director", director);
-        model.addAttribute("allFilms", filmRepository.findAll());
 
         return "directorForm";
     }

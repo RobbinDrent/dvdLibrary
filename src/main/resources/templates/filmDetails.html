@@ -23,7 +23,7 @@
     </tr>
 </table>
 
-<h1>Uitgaves in collectie</h1>
+<h1 th:if="${!filmToShow.discs.isEmpty()}">Versies in collectie</h1>
 
 <table th:class="centerSmall">
     <tr th:each="disc : ${filmToShow.discs}">

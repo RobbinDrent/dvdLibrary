@@ -42,11 +42,11 @@ public class Disc {
         StringBuilder stringBuilder = new StringBuilder();
 
         if (distributor != null) {
-            stringBuilder.append(String.format("- Uitgever: %s<br />", distributor));
+            stringBuilder.append(String.format("Uitgever: %s<br />", distributor));
         }
 
         if (description != null) {
-            stringBuilder.append(String.format("- %s", description));
+            stringBuilder.append(String.format("%s", description));
         }
 
         return stringBuilder.toString();

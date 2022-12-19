@@ -29,7 +29,17 @@ public class Director {
     @NotNull
     private String lastName;
 
-    private int geboortedatum;
-    private String land;
+    private int dateOfBirth;
+    private String country;
+
+    public String getDisplayName() {
+        String displayName = firstName;
+
+        if (!infixName.equals("")){
+            displayName += " " + infixName;
+        }
+
+        return displayName += " " + lastName;
+    }
 
 }

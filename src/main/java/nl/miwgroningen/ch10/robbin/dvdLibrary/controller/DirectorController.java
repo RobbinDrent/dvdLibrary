@@ -31,14 +31,16 @@ public class DirectorController {
         return "directorOverview";
     }
 
-    @GetMapping("/new/directorId")
+    @GetMapping("/details/{directorId}")
     protected String showDirectorDetail(@PathVariable("directorId") Long directorId, Model model) {
         Optional<Director> director = directorRepository.findById(directorId);
 
         if (director.isPresent()) {
+            System.out.println("konijnen");
             model.addAttribute("directorToShow", director.get());
             return "directorDetails";
         }
+        System.out.println("vlees");
         return "redirect:/directors/all";
     }
 }

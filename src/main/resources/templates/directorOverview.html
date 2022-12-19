@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Overzicht van alle regisseurs</title>
+</head>
+<body>
+<div class="center">
+  <div class="padding-button-bottom">
+    <a th:href="@{/directors/all(sortBy ='alfabetisch')}"><button type="button" class="btn btn-primary" >Alfabetisch</button></a>
+    <a th:href="@{/directors/all(sortBy ='andersom')}"><button type="button" class="btn btn-primary" >Andersom</button></a>
+  </div>
+
+  <table class="center">
+    <tr>
+      <th>Voornaam</th>
+      <th>Tussenvoegsel</th>
+      <th>Achternaam</th>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 body {
-    background-color: #eafaea;
+    background-color: lightgoldenrodyellow;
 }
 
 h1 {
@@ -9,13 +9,17 @@ h1 {
     font-size: 40px;
 }
 
-p {
+p.center {
     color: blue;
     font-family: calibri;
     margin-left: 5%;
 }
 
-
+span.return {
+    margin-left: 15%;
+    font-family: calibri;
+    padding-top: 25px;
+}
 
 table.center {
     width: 70%;

@@ -1,8 +1,8 @@
 package nl.miwgroningen.ch10.robbin.dvdLibrary.controller;
 
-import lombok.Getter;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.model.Director;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.DirectorRepository;
+import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.FilmRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,9 +19,11 @@ import java.util.Optional;
 @Controller @RequestMapping("/directors")
 public class DirectorController {
     private final DirectorRepository directorRepository;
+    private final FilmRepository filmRepository;
 
-    public DirectorController(DirectorRepository directorRepository) {
+    public DirectorController(DirectorRepository directorRepository, FilmRepository filmRepository) {
         this.directorRepository = directorRepository;
+        this.filmRepository = filmRepository;
     }
 
     @GetMapping("/all")
@@ -36,13 +38,33 @@ public class DirectorController {
         Optional<Director> director = directorRepository.findById(directorId);
 
         if (director.isPresent()) {
-            System.out.println("konijnen");
             model.addAttribute("directorToShow", director.get());
             return "directorDetails";
         }
-        System.out.println("vlees");
         return "redirect:/directors/all";
     }
+
+    @GetMapping("/new")
+    protected String showNewDirectorForm(Model model) {
+        return showFormForDirector(model, new Director());
+    }
+
+    private String showFormForDirector(Model model, Director director) {
+        model.addAttribute("director", director);
+        model.addAttribute("allFilms", filmRepository.findAll());
+
+        return "directorForm";
+    }
+
+    @PostMapping("/new")
+    protected String addDirector(@ModelAttribute ("director") Director directorToAdd, BindingResult result) {
+        if(!result.hasErrors()) {
+            directorRepository.save(directorToAdd);
+        }
+
+        return "redirect:/directors/all";
+    }
+
 }
 
 

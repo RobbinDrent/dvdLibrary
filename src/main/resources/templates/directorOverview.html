@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/general :: baseHeader(~{:: title})">
-    <title>Title</title>
+    <title>Alle regisseurs</title>
 </head>
 <body>
 <div th:replace="fragments/general :: navbar"></div>
-
+<a th:href="@{/directors/new}"><button type="button" class="btn btn-primary" >Nieuwe regisseur</button></a>
 <table class="center">
     <tr>
         <th>Voornaam</th>
         <th>Land</th>
+        <th>Geboortejaar</th>
         <th>Aantal films</th>
     </tr>
     <tr th:each="director : ${allDirectors}">
         <td><a th:href="@{/directors/details/{directorId}(directorId=${director.directorId})}" th:text="${director.displayName}"></a></td>
         <td th:text="${director.country}"></td>
-        <td></td>
+        <td th:text="${director.getDateOfBirth()}"></td>
+        <td th:text="${director.getNumberOfFilms()}"></td>
     </tr>
 </table>
 

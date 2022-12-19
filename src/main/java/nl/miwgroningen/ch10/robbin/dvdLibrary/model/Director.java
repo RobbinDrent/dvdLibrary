@@ -3,11 +3,14 @@ package nl.miwgroningen.ch10.robbin.dvdLibrary.model;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import nl.miwgroningen.ch10.robbin.dvdLibrary.controller.FilmController;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * @author Robbin Drent <r.v.drent@st.hanze.nl>
@@ -32,14 +35,21 @@ public class Director {
     private int dateOfBirth;
     private String country;
 
+    @ManyToMany
+    private Set<Film> films;
+
     public String getDisplayName() {
         String displayName = firstName;
 
-        if (!infixName.equals("")){
+        if (infixName != null){
             displayName += " " + infixName;
         }
 
         return displayName += " " + lastName;
+    }
+
+    public int getNumberOfFilms() {
+        return films.size();
     }
 
 }

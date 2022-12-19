@@ -2,6 +2,11 @@ body {
     background-color: lightgoldenrodyellow;
 }
 
+a {
+    text-decoration: underline;
+    color: black;
+}
+
 h1 {
     color: purple;
     text-align: center;
@@ -14,22 +19,15 @@ h1 {
     width: 70%;
 }
 
-p.center {
-    color: blue;
-    font-family: calibri;
-    margin-left: 5%;
+.centerSmall {
+    margin: 0 auto;
+    width: 40%;
 }
 
 span.return {
     margin-left: 15%;
     font-family: calibri;
     padding-top: 25px;
-}
-
-table.center {
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
 }
 
 th, td {
@@ -44,6 +42,14 @@ tr:nth-child(odd) {
 
 tr:nth-child(even) {
     background-color: lightskyblue;
+}
+
+tr:nth-child(odd):hover {
+    background-color: lightblue;
+}
+
+tr:nth-child(even):hover {
+    background-color: lightblue;
 }
 
 input {

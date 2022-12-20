@@ -29,6 +29,7 @@
     <tr th:each="disc : ${filmToShow.discs}">
         <td th:text="${disc.returnFormat()}"></td>
         <td th:utext="${disc.toString}"></td>
+        <td th:if="${disc.boxset != null}">Onderdeel van: <span th:text="${disc.boxset.title}"></span></td>
     </tr>
 </table>
 <div th:replace="fragments/general :: footer"></div>

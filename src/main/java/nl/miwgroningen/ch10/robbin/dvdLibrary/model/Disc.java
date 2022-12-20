@@ -30,6 +30,9 @@ public class Disc {
     @ManyToOne
     private Film film;
 
+    @ManyToOne
+    private Boxset boxset;
+
     public String returnFormat() {
         if (isDVD) {
             return "DVD";

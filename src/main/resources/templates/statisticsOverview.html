@@ -9,6 +9,22 @@
 <h1>Statistieken</h1>
 <table class="centerSmall">
     <tr>
+        <th>Totaal aantal films</th>
+        <td th:text="${allFilms.size()}"></td>
+    </tr>
+    <tr>
+        <th>Totaal aantal versies</th>
+        <td th:text="${allDiscs.size()}"></td>
+    </tr>
+    <tr>
+        <th>Totaal aantal regisseurs</th>
+        <td th:text="${allDirectors.size()}"></td>
+    </tr>
+    <tr>
+        <th>Totaal aantal boxsets</th>
+        <td th:text="${allBoxsets.size()}"></td>
+    </tr>
+    <tr>
         <th>Regisseur met de meeste films</th>
         <td>
             <span th:text="${directorMostFilms.displayName}"></span>
@@ -20,6 +36,13 @@
         <td>
             <span th:text="${filmMostsDiscs.title}"></span>
             (<span th:text="${filmMostsDiscs.getDiscs().size()}"></span>)
+        </td>
+    </tr>
+    <tr>
+        <th>Grootste boxset</th>
+        <td>
+            <span th:text="${boxsetMostDiscs.title}"></span>
+            (<span th:text="${boxsetMostDiscs.getDiscs().size()}"></span>)
         </td>
     </tr>
 </table>

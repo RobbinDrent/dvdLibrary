@@ -21,7 +21,7 @@ import java.util.Set;
  * <p>
  * Dit is wat het programma doet.
  */
-@Controller @RequestMapping("/statistics")
+@Controller
 public class StatisticsController {
     private final DirectorRepository directorRepository;
     private final DiscRepository discRepository;
@@ -35,7 +35,7 @@ public class StatisticsController {
         this.boxsetRepository = boxsetRepository;
     }
 
-    @GetMapping("/all")
+    @GetMapping({ "/statistics/all", "/"})
     protected String showStatisticsOverview(Model model) {
         model.addAttribute("allDirectors", directorRepository.findAll());
         model.addAttribute("allDiscs", discRepository.findAll());

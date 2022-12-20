@@ -34,8 +34,12 @@ public class DirectorController {
             model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameAsc());
         } else if (sortBy.equals("lastNameDesc")){
             model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameDesc());
-        } else {
+        } else if (sortBy.equals("lastNameAsc")){
             model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameAsc());
+        } else if (sortBy.equals("dateOfBirthDesc")){
+            model.addAttribute("allDirectors", directorRepository.findByOrderByDateOfBirthDesc());
+        } else if (sortBy.equals("dateOfBirthAsc")){
+            model.addAttribute("allDirectors", directorRepository.findByOrderByDateOfBirthAsc());
         }
 
         return "directorOverview";

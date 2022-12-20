@@ -15,6 +15,7 @@ import java.util.List;
 public interface DirectorRepository extends JpaRepository<Director, Long> {
     List<Director> findByOrderByLastNameAsc();
     List<Director> findByOrderByLastNameDesc();
-
+    List<Director> findByOrderByDateOfBirthAsc();
+    List<Director> findByOrderByDateOfBirthDesc();
 
 }

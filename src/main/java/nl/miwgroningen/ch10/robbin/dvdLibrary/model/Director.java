@@ -4,12 +4,15 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.controller.FilmController;
+import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.DirectorRepository;
 
+import javax.naming.spi.DirectoryManager;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -50,6 +53,16 @@ public class Director {
 
     public int getNumberOfFilms() {
         return films.size();
+    }
+
+    public Director mostFilmsPerDirector(DirectorRepository repository) {
+        Director tempDirector = new Director();
+        for (Director director : repository.findAll()) {
+            if (director.getFilms().size() >= tempDirector.getFilms().size()) {
+                tempDirector = director;
+            }
+        }
+        return tempDirector;
     }
 
 }

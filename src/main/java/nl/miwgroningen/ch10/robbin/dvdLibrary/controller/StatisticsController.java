@@ -1,6 +1,7 @@
 package nl.miwgroningen.ch10.robbin.dvdLibrary.controller;
 
 import nl.miwgroningen.ch10.robbin.dvdLibrary.model.Director;
+import nl.miwgroningen.ch10.robbin.dvdLibrary.model.Disc;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.model.Film;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.DirectorRepository;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.DiscRepository;
@@ -37,6 +38,7 @@ public class StatisticsController {
         model.addAttribute("allDiscs", discRepository.findAll());
         model.addAttribute("allFilms", filmRepository.findAll());
         model.addAttribute("directorMostFilms", findDirectorWithMostFilm());
+        model.addAttribute("filmMostsDiscs", findFilmMostDiscs());
 
         return "statisticsOverview";
     }
@@ -52,5 +54,18 @@ public class StatisticsController {
             }
         }
         return tempDirector;
+    }
+
+    protected Film findFilmMostDiscs() {
+        Film tempFilm = new Film();
+        Set<Disc> discs = new HashSet<>();
+        tempFilm.setDiscs(discs);
+
+        for (Film film : filmRepository.findAll()) {
+            if (tempFilm.getDiscs().size() <= film.getDiscs().size()) {
+                tempFilm = film;
+            }
+        }
+        return tempFilm;
     }
 }

@@ -51,10 +51,6 @@ public class Director {
         return displayName += " " + lastName;
     }
 
-    public int getNumberOfFilms() {
-        return films.size();
-    }
-
     public Director mostFilmsPerDirector(DirectorRepository repository) {
         Director tempDirector = new Director();
         for (Director director : repository.findAll()) {

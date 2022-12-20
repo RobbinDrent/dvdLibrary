@@ -12,10 +12,16 @@
         <th>Regisseur met de meeste films</th>
         <td>
             <span th:text="${directorMostFilms.displayName}"></span>
-            (<span th:text="${directorMostFilms.getNumberOfFilms()}"></span>)
+            (<span th:text="${directorMostFilms.getFilms().size()}"></span>)
         </td>
     </tr>
-
+    <tr>
+        <th>Film met de meeste versies</th>
+        <td>
+            <span th:text="${filmMostsDiscs.title}"></span>
+            (<span th:text="${filmMostsDiscs.getDiscs().size()}"></span>)
+        </td>
+    </tr>
 </table>
 
 <div th:replace="fragments/general :: footer"></div>

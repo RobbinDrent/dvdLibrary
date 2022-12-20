@@ -14,7 +14,10 @@
                 <a th:href="@{/directors/all(sortBy ='lastNameAsc')}"><i class="fas fa-sort-up"></i></a>
                 <a th:href="@{/directors/all(sortBy ='lastNameDesc')}"><i class="fas fa-sort-down"></i></a>
             </th>
-            <th>Land</th>
+            <th>Land
+                <a th:href="@{/directors/all(sortBy ='countryAsc')}"><i class="fas fa-sort-up"></i></a>
+                <a th:href="@{/directors/all(sortBy ='countryDesc')}"><i class="fas fa-sort-down"></i></a>
+            </th>
             <th>Geboortejaar
                 <a th:href="@{/directors/all(sortBy ='dateOfBirthAsc')}"><i class="fas fa-sort-up"></i></a>
                 <a th:href="@{/directors/all(sortBy ='dateOfBirthDesc')}"><i class="fas fa-sort-down"></i></a>

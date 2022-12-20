@@ -8,14 +8,22 @@
     <h1>Films</h1>
     <table class="center">
         <tr>
-            <th>Titel</th>
-            <th>Releasejaar</th>
+            <th>Titel
+                <a th:href="@{/films/all(sortBy ='titleAsc')}"><i class="fas fa-sort-up"></i></a>
+                <a th:href="@{/films/all(sortBy ='titleDesc')}"><i class="fas fa-sort-down"></i></a>
+            </th>
+            <th>Releasejaar
+                <a th:href="@{/films/all(sortBy ='releaseYearAsc')}"><i class="fas fa-sort-up"></i></a>
+                <a th:href="@{/films/all(sortBy ='releaseYearDesc')}"><i class="fas fa-sort-down"></i></a>
+            </th>
             <th>Regisseur(s)</th>
+            <th>Aantal Versies</th>
         </tr>
         <tr th:each="film : ${allFilms}">
             <td><a th:href="@{/films/details/{filmId}(filmId=${film.filmId})}" th:text="${film.title}"></a></td>
             <td th:text="${film.releaseYear}"></td>
             <td th:utext="${film.allDirectorsToString()}"></td>
+            <td th:text="${film.discs.size()}"></td>
         </tr>
     </table>
 

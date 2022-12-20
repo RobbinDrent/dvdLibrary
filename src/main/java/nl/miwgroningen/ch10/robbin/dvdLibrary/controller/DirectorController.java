@@ -40,6 +40,10 @@ public class DirectorController {
             model.addAttribute("allDirectors", directorRepository.findByOrderByDateOfBirthDesc());
         } else if (sortBy.equals("dateOfBirthAsc")){
             model.addAttribute("allDirectors", directorRepository.findByOrderByDateOfBirthAsc());
+        } else if (sortBy.equals("countryDesc")){
+            model.addAttribute("allDirectors", directorRepository.findByOrderByCountryDesc());
+        } else if (sortBy.equals("countryAsc")){
+            model.addAttribute("allDirectors", directorRepository.findByOrderByCountryAsc());
         }
 
         return "directorOverview";

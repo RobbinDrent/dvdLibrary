@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -28,8 +29,18 @@ public class FilmController {
     }
 
     @GetMapping("/all")
-    protected String showFilmOverview(Model model) {
-        model.addAttribute("allFilms", filmRepository.findAll());
+    protected String showFilmOverview(@RequestParam(required = false) String sortBy, Model model) {
+        if(sortBy == null){
+            model.addAttribute("allFilms", filmRepository.findByOrderByTitleAsc());
+        } else if (sortBy.equals("titleDesc")){
+            model.addAttribute("allFilms", filmRepository.findByOrderByTitleDesc());
+        } else if (sortBy.equals("titleAsc")){
+            model.addAttribute("allFilms", filmRepository.findByOrderByTitleAsc());
+        } else if (sortBy.equals("releaseYearDesc")){
+            model.addAttribute("allFilms", filmRepository.findByOrderByReleaseYearDesc());
+        } else if (sortBy.equals("releaseYearAsc")){
+            model.addAttribute("allFilms", filmRepository.findByOrderByReleaseYearAsc());
+        }
 
         return "filmOverview";
     }

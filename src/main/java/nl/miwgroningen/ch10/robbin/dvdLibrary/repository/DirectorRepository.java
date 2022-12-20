@@ -17,5 +17,7 @@ public interface DirectorRepository extends JpaRepository<Director, Long> {
     List<Director> findByOrderByLastNameDesc();
     List<Director> findByOrderByDateOfBirthAsc();
     List<Director> findByOrderByDateOfBirthDesc();
+    List<Director> findByOrderByCountryAsc();
+    List<Director> findByOrderByCountryDesc();
 
 }

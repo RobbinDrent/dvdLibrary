@@ -29,7 +29,14 @@ public class DirectorController {
 
     @GetMapping("/all")
     protected String showAuthorOverview(@RequestParam(required = false) String sortBy, Model model) {
-        model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameAsc());
+
+        if (sortBy == null){
+            model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameAsc());
+        } else if (sortBy.equals("lastNameDesc")){
+            model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameDesc());
+        } else {
+            model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameAsc());
+        }
 
         return "directorOverview";
     }

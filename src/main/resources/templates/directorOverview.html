@@ -4,26 +4,33 @@
     <title>Alle regisseurs</title>
 </head>
 <body>
-<div th:replace="fragments/general :: navbar"></div>
-<a th:href="@{/directors/new}"><button type="button" class="btn btn-primary" >Nieuwe regisseur</button></a>
-<table class="center">
-    <tr>
-        <th>Voornaam</th>
-        <th>Land</th>
-        <th>Geboortejaar</th>
-        <th>Aantal films</th>
-    </tr>
-    <tr th:each="director : ${allDirectors}">
-        <td><a th:href="@{/directors/details/{directorId}(directorId=${director.directorId})}" th:text="${director.displayName}"></a></td>
-        <td th:text="${director.country}"></td>
-        <td th:text="${director.getDateOfBirth()}"></td>
-        <td th:text="${director.getNumberOfFilms()}"></td>
-    </tr>
-</table>
+    <div th:replace="fragments/general :: navbar"></div>
+    <a th:href="@{/directors/new}"><button type="button" class="btn btn-primary" >Nieuwe regisseur</button></a>
+    <a th:href="@{/directors/all(sortBy ='lastNameAsc')}"><button type="button" class="btn btn-primary" >sorteer op achternaam</button></a>
+    <a th:href="@{/directors/all(sortBy ='lastNameDesc')}"><button type="button" class="btn btn-primary" >sorteer op voornaam</button></a>
 
-<div th:replace="fragments/general :: footer"></div>
+    <h1>Regisseurs</h1>
+    <table class="center">
+        <tr>
+            <th>Naam
+                <a th:href="@{/directors/all(sortBy ='lastNameAsc')}"><i class="fas fa-sort-up"></i></a>
+                <a th:href="@{/directors/all(sortBy ='lastNameDesc')}"><i class="fas fa-sort-down"></i></a>
+            </th>
+            <th>Land</th>
+            <th>Geboortejaar</th>
+            <th>Aantal films</th>
+        </tr>
+        <tr th:each="director : ${allDirectors}">
+            <td><a th:href="@{/directors/details/{directorId}(directorId=${director.directorId})}" th:text="${director.displayName}"></a></td>
+            <td th:text="${director.country}"></td>
+            <td th:text="${director.getDateOfBirth()}"></td>
+            <td th:text="${director.getNumberOfFilms()}"></td>
+        </tr>
+    </table>
 
-<div th:replace="fragments/general :: bottomScripts"></div>
+    <div th:replace="fragments/general :: footer"></div>
+
+    <div th:replace="fragments/general :: bottomScripts"></div>
 
 
 </body>

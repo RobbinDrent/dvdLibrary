@@ -25,7 +25,7 @@
             <td><a th:href="@{/directors/details/{directorId}(directorId=${director.directorId})}" th:text="${director.displayName}"></a></td>
             <td th:text="${director.country}"></td>
             <td th:text="${director.getDateOfBirth()}"></td>
-            <td th:text="${director.getNumberOfFilms()}"></td>
+            <td th:text="${director.films.size()}"></td>
         </tr>
     </table>
 

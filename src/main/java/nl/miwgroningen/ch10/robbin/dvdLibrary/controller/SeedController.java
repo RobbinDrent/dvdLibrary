@@ -50,9 +50,23 @@ public class SeedController {
         Altman.setCountry("Verenigde Staten");
         Altman.setDateOfBirth(1925);
 
+        Director ECoen = new Director();
+        ECoen.setFirstName("Ethan");
+        ECoen.setLastName("Coen");
+        ECoen.setCountry("Verenigde Staten");
+        ECoen.setDateOfBirth(1957);
+
+        Director JCoen = new Director();
+        JCoen.setFirstName("Joel");
+        JCoen.setLastName("Coen");
+        JCoen.setCountry("Verenigde Staten");
+        JCoen.setDateOfBirth(1954);
+
         directorRepository.save(Scorsese);
         directorRepository.save(Kurosawa);
         directorRepository.save(Altman);
+        directorRepository.save(ECoen);
+        directorRepository.save(JCoen);
 
         Film taxiDriver = new Film();
         taxiDriver.setTitle("Taxi Driver");
@@ -70,10 +84,15 @@ public class SeedController {
         ran.setTitle("Ran");
         ran.setReleaseYear(1985);
 
+        Film fargo = new Film();
+        fargo.setTitle("Fargo");
+        fargo.setReleaseYear(1996);
+
         filmRepository.save(taxiDriver);
         filmRepository.save(sevenSamurai);
         filmRepository.save(rashomon);
         filmRepository.save(ran);
+        filmRepository.save(fargo);
 
         Set<Film> films1 = new HashSet<>();
         films1.add(taxiDriver);
@@ -83,12 +102,22 @@ public class SeedController {
         films2.add(rashomon);
         films2.add(ran);
 
+        Set<Film> films3 = new HashSet<>();
+        films3.add(fargo);
+
+        Set<Film> films4 = new HashSet<>();
+        films4.add(fargo);
+
         Scorsese.setFilms(films1);
         Kurosawa.setFilms(films2);
+        ECoen.setFilms(films3);
+        JCoen.setFilms(films4);
 
         directorRepository.save(Scorsese);
         directorRepository.save(Kurosawa);
         directorRepository.save(Altman);
+        directorRepository.save(ECoen);
+        directorRepository.save(JCoen);
 
         Disc sevenSamuraiBlu = new Disc();
         sevenSamuraiBlu.setDistributor("BFI");

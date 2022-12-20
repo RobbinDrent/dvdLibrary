@@ -17,9 +17,9 @@
         <th>Releasejaar</th>
         <td th:text="${filmToShow.releaseYear}"></td>
     </tr>
-    <tr th:each="director : ${directorsOfFilm}">
+    <tr>
         <th>Naam</th>
-        <td><a th:href="@{/directors/details/{directorId}(directorId=${director.directorId})}"><span th:text="${director.displayName}"></span> </a> </td>
+        <td th:utext="${filmToShow.allDirectorsToString()}"></td>
     </tr>
 </table>
 

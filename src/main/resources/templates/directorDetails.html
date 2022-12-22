@@ -8,6 +8,8 @@
 
     <h1 th:text="${directorToShow.displayName}"></h1>
 
+    <a th:href="@{/directors/edit/{directorId}(directorId=${directorToShow.directorId})}"><button type="button" class="btn btn-primary" >Edit regisseur</button></a>
+
     <table th:class="center">
         <tr>
             <th>Naam</th>

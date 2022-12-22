@@ -20,16 +20,11 @@
                 <a th:href="@{/directors/all(sortBy ='countryAsc')}"><i class="fas fa-sort-up"></i></a>
                 <a th:href="@{/directors/all(sortBy ='countryDesc')}"><i class="fas fa-sort-down"></i></a>
             </th>
-            <th>Geboortejaar
-                <a th:href="@{/directors/all(sortBy ='dateOfBirthAsc')}"><i class="fas fa-sort-up"></i></a>
-                <a th:href="@{/directors/all(sortBy ='dateOfBirthDesc')}"><i class="fas fa-sort-down"></i></a>
-            </th>
             <th>Aantal films</th>
         </tr>
         <tr th:each="director : ${allDirectors}">
             <td><a th:href="@{/directors/details/{directorId}(directorId=${director.directorId})}" th:text="${director.displayName}"></a></td>
             <td th:text="${director.country}"></td>
-            <td th:text="${director.getDateOfBirth()}"></td>
             <td th:text="${director.films.size()}"></td>
         </tr>
     </table>

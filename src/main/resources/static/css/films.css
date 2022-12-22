@@ -10,13 +10,12 @@ a {
 h1 {
     color: purple;
     text-align: center;
-    font-family: verdana;
     font-size: 40px;
 }
 
 .center {
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
 }
 
 .centerSmall {
@@ -26,14 +25,12 @@ h1 {
 
 span.return {
     margin-left: 15%;
-    font-family: calibri;
     padding-top: 25px;
 }
 
 th, td {
     padding: 15px;
     text-align: left;
-    font-family: Arial;
 }
 
 tr:nth-child(odd) {

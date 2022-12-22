@@ -80,6 +80,17 @@ public class DirectorController {
         return "redirect:/directors/all";
     }
 
+    @GetMapping("/edit/{directorId}")
+    protected String showEditDirectorForm(@PathVariable("directorId") Long directorId, Model model) {
+        Optional<Director> director = directorRepository.findById(directorId);
+
+        if (director.isPresent()) {
+            return showFormForDirector(model, director.get());
+        }
+
+        return "redirect:/directors/all";
+    }
+
 }
 
 

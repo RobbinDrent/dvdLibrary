@@ -1,14 +1,13 @@
 package nl.miwgroningen.ch10.robbin.dvdLibrary.controller;
 
+import nl.miwgroningen.ch10.robbin.dvdLibrary.model.Director;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.model.Film;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.DirectorRepository;
 import nl.miwgroningen.ch10.robbin.dvdLibrary.repository.FilmRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -56,5 +55,36 @@ public class FilmController {
             return "filmDetails";
         }
         return "redirect:/films/all";
+    }
+
+    @GetMapping("/new")
+    protected String showNewFilmForm(Model model) {
+        return showFormForFilm(model, new Film());
+    }
+
+    private String showFormForFilm(Model model, Film film) {
+        model.addAttribute("film", film);
+
+        return "filmForm";
+    }
+
+    @PostMapping("/new")
+    protected String addDirector(@ModelAttribute ("film") Film filmToAdd, BindingResult result) {
+        if(!result.hasErrors()) {
+            filmRepository.save(filmToAdd);
+        }
+
+        return "redirect:/directors/all";
+    }
+
+    @GetMapping("/edit/{filmId}")
+    protected String showEditFilmForm(@PathVariable("filmId") Long filmId, Model model) {
+        Optional<Film> film = filmRepository.findById(filmId);
+
+        if (film.isPresent()) {
+            return showFormForFilm(model, film.get());
+        }
+
+        return "redirect:/directors/all";
     }
 }

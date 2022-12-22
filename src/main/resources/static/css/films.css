@@ -7,6 +7,11 @@ a {
     color: black;
 }
 
+a.title {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 h1 {
     color: purple;
     text-align: center;
@@ -31,6 +36,7 @@ span.return {
 th, td {
     padding: 15px;
     text-align: left;
+    font-family: Arial;
 }
 
 tr:nth-child(odd) {

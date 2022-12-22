@@ -29,12 +29,17 @@ public class FilmController {
 
     @GetMapping("/all")
     protected String showFilmOverview(@RequestParam(required = false) String sortBy, Model model) {
+        for (Film film : filmRepository.findAll()) {
+            film.setDisplayTitle();
+            filmRepository.save(film);
+        }
+
         if(sortBy == null){
-            model.addAttribute("allFilms", filmRepository.findByOrderByTitleAsc());
+            model.addAttribute("allFilms", filmRepository.findByOrderByDisplayTitleAsc());
         } else if (sortBy.equals("titleDesc")){
-            model.addAttribute("allFilms", filmRepository.findByOrderByTitleDesc());
+            model.addAttribute("allFilms", filmRepository.findByOrderByDisplayTitleDesc());
         } else if (sortBy.equals("titleAsc")){
-            model.addAttribute("allFilms", filmRepository.findByOrderByTitleAsc());
+            model.addAttribute("allFilms", filmRepository.findByOrderByDisplayTitleAsc());
         } else if (sortBy.equals("releaseYearDesc")){
             model.addAttribute("allFilms", filmRepository.findByOrderByReleaseYearDesc());
         } else if (sortBy.equals("releaseYearAsc")){
@@ -64,17 +69,28 @@ public class FilmController {
 
     private String showFormForFilm(Model model, Film film) {
         model.addAttribute("film", film);
+        model.addAttribute("allDirectors", directorRepository.findByOrderByLastNameAsc());
 
         return "filmForm";
     }
 
     @PostMapping("/new")
-    protected String addDirector(@ModelAttribute ("film") Film filmToAdd, BindingResult result) {
+    protected String addFilm(@ModelAttribute ("film") Film filmToAdd, BindingResult result) {
         if(!result.hasErrors()) {
+            addFilmToDirector(filmToAdd);
             filmRepository.save(filmToAdd);
         }
+        return "redirect:/films/all";
+    }
 
-        return "redirect:/directors/all";
+    protected void addFilmToDirector(Film film) {
+        if(film.getDirectors() != null) {
+            for (Director director : film.getDirectors()) {
+                if (!film.getDirectors().contains(director)) {
+                    film.addDirector(director);
+                }
+            }
+        }
     }
 
     @GetMapping("/edit/{filmId}")
@@ -85,6 +101,6 @@ public class FilmController {
             return showFormForFilm(model, film.get());
         }
 
-        return "redirect:/directors/all";
+        return "redirect:/films/all";
     }
 }

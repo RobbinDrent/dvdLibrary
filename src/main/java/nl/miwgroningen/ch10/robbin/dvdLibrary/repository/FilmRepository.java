@@ -13,11 +13,12 @@ import java.util.List;
  */
 @Repository
 public interface FilmRepository extends JpaRepository<Film, Long> {
-    List<Film> findByOrderByTitleAsc();
-    List<Film> findByOrderByTitleDesc();
+    List<Film> findByOrderByDisplayTitleAsc();
+    List<Film> findByOrderByDisplayTitleDesc();
     List<Film> findByOrderByReleaseYearAsc();
     List<Film> findByOrderByReleaseYearDesc();
 //    List<Film> findByOrderByDirectorsAsc();
 //    List<Film> findByOrderByDirectorsDesc();
+
 
 }

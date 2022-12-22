@@ -26,6 +26,8 @@ public class Film {
 
     private int releaseYear;
 
+    private String displayTitle;
+
     @ManyToMany (mappedBy = "films")
     private Set<Director> directors;
 
@@ -46,5 +48,24 @@ public class Film {
         }
 
         return stringBuilder.toString();
+    }
+
+    public void setDisplayTitle() {
+        String tempString = title;
+        if (tempString.startsWith("The")){
+            tempString = tempString.replace("The ", "");
+            tempString = tempString + ", The";
+        }
+
+        this.displayTitle = tempString;
+    }
+
+    public String toString() {
+        String tempString = title;
+        if (tempString.startsWith("The")){
+            tempString = tempString.replace("The ", "");
+            tempString = tempString + ", The";
+        }
+        return tempString;
     }
 }

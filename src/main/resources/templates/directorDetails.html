@@ -31,7 +31,7 @@
             <th>Jaar</th>
         </tr>
         <tr th:each="film : ${directorToShow.films}">
-            <td><a th:href="@{/films/details/{filmId}(filmId=${film.filmId})}"><span th:text="${film.title}"></span></a></td>
+            <td><a th:class="title" th:href="@{/films/details/{filmId}(filmId=${film.filmId})}"><span th:text="${film.title}"></span></a></td>
             <td th:text="${film.releaseYear}"></td>
         </tr>
     </table>

@@ -6,6 +6,7 @@
 <body>
     <div th:replace="fragments/general :: navbar"></div>
     <h1>Films</h1>
+    <a th:href="@{/films/new}"><button type="button" class="btn btn-primary" >Nieuwe film</button></a>
     <table class="center">
         <tr>
             <th>Titel
@@ -20,7 +21,7 @@
             <th>Aantal Versies</th>
         </tr>
         <tr th:each="film : ${allFilms}">
-            <td><a th:href="@{/films/details/{filmId}(filmId=${film.filmId})}" th:text="${film.title}"></a></td>
+            <td><a th:class="title" th:href="@{/films/details/{filmId}(filmId=${film.filmId})}" th:text="${film.displayTitle}"></a></td>
             <td th:text="${film.releaseYear}"></td>
             <td th:utext="${film.allDirectorsToString()}"></td>
             <td th:text="${film.discs.size()}"></td>

@@ -21,7 +21,7 @@
             <th>Aantal Versies</th>
         </tr>
         <tr th:each="film : ${allFilms}">
-            <td><a th:class="title" th:href="@{/films/details/{filmId}(filmId=${film.filmId})}" th:text="${film.displayTitle}"></a></td>
+            <td><a th:class="title" th:href="@{/films/details/{filmId}(filmId=${film.filmId})}" th:text="${film.title}"></a></td>
             <td th:text="${film.releaseYear}"></td>
             <td th:utext="${film.allDirectorsToString()}"></td>
             <td th:text="${film.discs.size()}"></td>

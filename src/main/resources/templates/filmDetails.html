@@ -8,6 +8,9 @@
 
 <h1 th:text="${filmToShow.title}"></h1>
 
+<a th:href="@{/films/edit/{filmId}(filmId=${filmToShow.filmId})}"><button type="button" class="btn btn-primary" >Edit film</button></a>
+
+
 <table th:class="center">
     <tr>
         <th>Titel</th>

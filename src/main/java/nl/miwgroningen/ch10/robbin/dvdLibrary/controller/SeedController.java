@@ -128,42 +128,73 @@ public class SeedController {
         Film rashomon = new Film();
         rashomon.setTitle("Rashomôn");
         rashomon.setReleaseYear(1950);
+        Set<Director> rashomonDirectors = new HashSet<>();
+        rashomonDirectors.add(Kurosawa);
+        rashomon.setDirectors(rashomonDirectors);
 
         Film ran = new Film();
         ran.setTitle("Ran");
         ran.setReleaseYear(1985);
+        Set<Director> ranDirectors = new HashSet<>();
+        ranDirectors.add(Kurosawa);
+        ran.setDirectors(ranDirectors);
 
         Film fargo = new Film();
         fargo.setTitle("Fargo");
         fargo.setReleaseYear(1996);
+        Set<Director> fargoDirectors = new HashSet<>();
+        fargoDirectors.add(JCoen);
+        fargoDirectors.add(ECoen);
+        fargo.setDirectors(fargoDirectors);
 
         Film mFilm = new Film();
         mFilm.setTitle("M");
         mFilm.setReleaseYear(1931);
+        Set<Director> mFilmDirectors = new HashSet<>();
+        mFilmDirectors.add(Lang);
+        mFilm.setDirectors(mFilmDirectors);
 
         Film profound = new Film();
         profound.setTitle("Profound Desires of the Gods");
         profound.setReleaseYear(1968);
+        Set<Director> profoundDirectors = new HashSet<>();
+        profoundDirectors.add(Imamura);
+        profound.setDirectors(profoundDirectors);
 
         Film world = new Film();
         world.setTitle("The World");
         world.setReleaseYear(2004);
+        Set<Director> worldDirectors = new HashSet<>();
+        worldDirectors.add(Jia);
+        world.setDirectors(worldDirectors);
 
         Film rockHunter = new Film();
         rockHunter.setTitle("Will Success Spoil Rock Hunter?");
         rockHunter.setReleaseYear(1957);
+        Set<Director> rockHunterDirectors = new HashSet<>();
+        rockHunterDirectors.add(Tashlin);
+        rockHunter.setDirectors(rockHunterDirectors);
 
         Film repast = new Film();
         repast.setTitle("Repast");
         repast.setReleaseYear(1951);
+        Set<Director> repastDirectors = new HashSet<>();
+        repastDirectors.add(Naruse);
+        repast.setDirectors(repastDirectors);
 
         Film soundOfTheMountain = new Film();
         soundOfTheMountain.setTitle("Sound of the Mountain");
         soundOfTheMountain.setReleaseYear(1954);
+        Set<Director> soundOfTheMountainDirectors = new HashSet<>();
+        soundOfTheMountainDirectors.add(Naruse);
+        soundOfTheMountain.setDirectors(soundOfTheMountainDirectors);
 
         Film flowing = new Film();
         flowing.setTitle("Flowing");
         flowing.setReleaseYear(1956);
+        Set<Director> flowingDirectors = new HashSet<>();
+        flowingDirectors.add(Naruse);
+        flowing.setDirectors(flowingDirectors);
 
         filmRepository.save(taxiDriver);
         filmRepository.save(sevenSamurai);

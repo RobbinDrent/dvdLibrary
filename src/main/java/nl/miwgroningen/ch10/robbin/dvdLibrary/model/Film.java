@@ -28,7 +28,7 @@ public class Film {
 
     private String displayTitle;
 
-    @ManyToMany (mappedBy = "films")
+    @ManyToMany
     private Set<Director> directors;
 
     @OneToMany (mappedBy = "film")

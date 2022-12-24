@@ -98,15 +98,32 @@ public class SeedController {
         Naruse.setCountry("Japan");
         Naruse.setDateOfBirth(1905);
 
+        directorRepository.save(Scorsese);
+        directorRepository.save(Kurosawa);
+        directorRepository.save(Altman);
+        directorRepository.save(ECoen);
+        directorRepository.save(JCoen);
+        directorRepository.save(Lang);
+        directorRepository.save(Imamura);
+        directorRepository.save(Jia);
+        directorRepository.save(Tashlin);
+        directorRepository.save(Naruse);
+
         // Add films
 
         Film taxiDriver = new Film();
         taxiDriver.setTitle("Taxi Driver");
         taxiDriver.setReleaseYear(1976);
+        Set<Director> taxiDriverDirectors = new HashSet<>();
+        taxiDriverDirectors.add(Scorsese);
+        taxiDriver.setDirectors(taxiDriverDirectors);
 
         Film sevenSamurai = new Film();
         sevenSamurai.setTitle("Seven Samurai");
         sevenSamurai.setReleaseYear(1954);
+        Set<Director> sevenSamuraiDirectors = new HashSet<>();
+        sevenSamuraiDirectors.add(Kurosawa);
+        sevenSamurai.setDirectors(sevenSamuraiDirectors);
 
         Film rashomon = new Film();
         rashomon.setTitle("Rashomôn");
